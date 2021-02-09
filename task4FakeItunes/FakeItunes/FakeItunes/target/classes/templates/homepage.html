@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/main.css}">
+<script th:src="@{/js/bootstrap.min.js}" ></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="/"><img style="width: 35px" th:src="@{/img/thymeleaf.png}" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/customers">View</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/add-customers">Add</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">Welcome!</h1>
+        <p>Here are five random artists:</p>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-4" th:each="art:${artists}">
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${art.getName()}"></h5>
+                    <a class="btn btn-success" th:href="'/api/artists' + ${art.getArtistId()}">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<p>
+            <a class="btn btn-success btn-lg" href="/customers" role="button">View customers &raquo;</a>
+            <a class="btn btn-light btn-lg" href="/add-customers" role="button">Add customer &raquo;</a>
+        </p>
+    </div>
+</div>
+</body>
+</html>
